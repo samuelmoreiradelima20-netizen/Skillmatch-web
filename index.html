@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SkillMatch é uma aplicação que analisa a compatibilidade entre o perfil de um candidato e vagas de emprego.">
+    <title>SkillMatch</title>
+</head>
+
+<body>
+ <header>
+    <h1>skillmatch</h1>
+    <p>encontre vagas compativel com seu perfil.</p>
+</header>
+<main>
+    <section>
+        <h2>seu perfil</h2>
+        <p>preencha seus dados para encontrar vagas compatíveis</p>
+        <form>
+            <label for="name">nome:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="area">Área de interesse:</label>
+            <input type="text" id="area" name="area" required>
+
+            <label for="skills">Habilidades:</label>
+            <input type="text" id="skills" name="skills" required>
+
+            <label for="experience">Experiência (em anos):</label>
+            <input type="number" id="experience" name="experience" min="0" required>
+
+            <button type="submit">Analisar vagas</button>
+        </form>
+    </section>
+
+    <section>
+        <h2>vagas compatíveis</h2>
+        <div id="results"></div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2026 SkillMatch</p>
+</footer>
+
+</body>
+
+</html>
