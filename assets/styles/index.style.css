@@ -15,3 +15,21 @@ main {
 section {
     margin-bottom: 2rem;
 }
+
+input {
+    padding: 0.6rem;
+    margin-top: 0.3rem;
+}
+
+label {
+    display: block;
+    margin-top: 1rem;
+}
+
+button {
+    margin-top: 1rem;
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+}
