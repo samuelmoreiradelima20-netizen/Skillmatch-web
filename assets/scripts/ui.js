@@ -4,7 +4,9 @@ export function mostrarResultados(resultados) {
 
 resultados.forEach((resultado) => {
   const item = document.createElement("p");
-  item.textContent = `${resultado.empresa}: ${resultado.porcentagem}%`;
+ const area = resultado.areaCompativel ? "compatível" : "diferente";
+const experiencia = resultado.experienciaSuficiente ? "suficiente" : "insuficiente";
+item.textContent = `${resultado.empresa}: ${resultado.porcentagem}% das habilidades | Área: ${area} | Experiência: ${experiencia}`;
   areaResultados.appendChild(item);
 });
 }

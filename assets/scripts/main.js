@@ -9,11 +9,11 @@ const form = document.querySelector("#profile-form");
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
  const data = new FormData(form);
-const values = Object.fromEntries(data);
+ const values = Object.fromEntries(data);
 
 const profile = {
   name: values.name.trim(),
-  area: values.area.trim(),
+  area: values.area.trim().toLowerCase(),
   skills: values.skills.split(",").map((skill) => skill.trim().toLowerCase()),
   experience: Number(values.experience),
 };
