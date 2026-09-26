@@ -20,13 +20,18 @@ const profile = {
 
 console.log(profile);
 
-const vagas = await carregarVagas();
-console.log(vagas);
+try {
+  const vagas = await carregarVagas();
+  console.log(vagas);
 
-const resultados = vagas.map((vaga) =>
-  analisarCompatibilidade(profile, vaga)
-);
-console.log(resultados);
+  const resultados = vagas.map((vaga) =>
+    analisarCompatibilidade(profile, vaga)
+  );
+  console.log(resultados);
 
-mostrarResultados(resultados);
+  mostrarResultados(resultados);
+} catch (erro) {
+  document.querySelector("#results").textContent = erro.message;
+}
+
 });
