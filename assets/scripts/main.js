@@ -20,6 +20,8 @@ const profile = {
 
 console.log(profile);
 
+document.querySelector("#results").textContent = "Carregando vagas...";
+
 try {
   const vagas = await carregarVagas();
   console.log(vagas);
