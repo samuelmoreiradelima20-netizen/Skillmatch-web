@@ -7,8 +7,13 @@ export function analisarCompatibilidade(profile, vaga) {
     (habilidadesCompativeis.length / vaga.requisitos.length) * 100
   );
 
-const areaCompativel = profile.area === vaga.area;
-const experienciaSuficiente = profile.experience >= vaga.experienciaMinima;
+  const habilidadesFaltantes = vaga.requisitos.filter(
+    (requisito) => !profile.skills.includes(requisito)
+  );
+
+  const areaCompativel = profile.area === vaga.area;
+  const experienciaSuficiente =
+    profile.experience >= vaga.experienciaMinima;
 
   return {
     empresa: vaga.empresa,
@@ -17,5 +22,6 @@ const experienciaSuficiente = profile.experience >= vaga.experienciaMinima;
     habilidadesCompativeis,
     areaCompativel,
     experienciaSuficiente,
+    habilidadesFaltantes,
   };
 }

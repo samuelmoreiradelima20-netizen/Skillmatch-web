@@ -49,12 +49,14 @@ try {
   const vagas = await carregarVagas();
   console.log(vagas);
 
-  const resultados = vagas.map((vaga) =>
-    analisarCompatibilidade(profile, vaga)
-  );
+   const resultados = vagas
+    .map((vaga) => analisarCompatibilidade(profile, vaga))
+    .sort((a, b) => b.porcentagem - a.porcentagem);
+
   console.log(resultados);
 
   mostrarResultados(resultados);
+  
 } catch (erro) {
   document.querySelector("#results").textContent = erro.message;
 }
