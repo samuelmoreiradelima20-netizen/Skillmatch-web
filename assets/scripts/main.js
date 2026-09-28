@@ -23,9 +23,15 @@ form.addEventListener("submit", async (event) => {
 const profile = {
   name: values.name.trim(),
   area: values.area.trim().toLowerCase(),
-  skills: values.skills.split(",").map((skill) => skill.trim().toLowerCase()),
+  skills: values.skills.split(",").map((skill) => skill.trim().toLowerCase()).filter((skill) => skill !== ""),
   experience: Number(values.experience),
 };
+
+if (profile.skills.length === 0) {
+  document.querySelector("#results").textContent =
+    "Informe pelo menos uma habilidade.";
+  return;
+}
 
 localStorage.setItem("skillmatch-profile", JSON.stringify(profile));
 
