@@ -2,6 +2,11 @@ export function mostrarResultados(resultados) {
   const areaResultados = document.querySelector("#results");
   areaResultados.textContent = "";
 
+  if (resultados.length === 0) {
+    areaResultados.textContent = "Nenhuma vaga disponível no momento.";
+    return;
+  }
+
   resultados.forEach((resultado) => {
     const item = document.createElement("p");
     const area = resultado.areaCompativel ? "compatível" : "diferente";
