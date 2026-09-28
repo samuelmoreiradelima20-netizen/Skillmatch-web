@@ -27,6 +27,12 @@ const profile = {
   experience: Number(values.experience),
 };
 
+if (!profile.name || !profile.area) {
+  document.querySelector("#results").textContent =
+    "Informe seu nome e sua área de interesse.";
+  return;
+}
+
 if (profile.skills.length === 0) {
   document.querySelector("#results").textContent =
     "Informe pelo menos uma habilidade.";
