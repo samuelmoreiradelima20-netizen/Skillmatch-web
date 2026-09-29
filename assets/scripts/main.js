@@ -6,8 +6,7 @@ import {
   gerarRecomendacao,
 } from "./motor.js";
 
-import { mostrarResultados } from "./ui.js";
-
+import { mostrarResultados, mostrarMelhorVaga } from "./ui.js";
 const form = document.querySelector("#profile-form");
 
 const perfilSalvo = JSON.parse(localStorage.getItem("skillmatch-profile"));
@@ -68,6 +67,8 @@ try {
 console.log("Melhor vaga:", melhorVaga);
 
   mostrarResultados(resultados);
+
+  mostrarMelhorVaga(melhorVaga, recomendacao);
   
 } catch (erro) {
   document.querySelector("#results").textContent = erro.message;

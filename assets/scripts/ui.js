@@ -22,3 +22,15 @@ export function mostrarResultados(resultados) {
     areaResultados.appendChild(item);
   });
 }
+
+export function mostrarMelhorVaga(melhorVaga, recomendacao) {
+  const areaResultados = document.querySelector("#results");
+
+  const destaque = document.createElement("article");
+ destaque.classList.add("vaga-card", "melhor-vaga");
+  destaque.textContent =
+    `Melhor vaga: ${melhorVaga.empresa} - ${melhorVaga.cargo} | ` +
+    `${melhorVaga.porcentagem}% de compatibilidade | ${recomendacao}`;
+
+  areaResultados.prepend(destaque);
+}
