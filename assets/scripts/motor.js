@@ -17,9 +17,9 @@ export function analisarCompatibilidade(profile, vaga) {
 
     let classificacao;
 
-if (porcentagem >= 70) {
+if (porcentagem >= 80) {
   classificacao = "Alta";
-} else if (porcentagem >= 40) {
+} else if (porcentagem >= 50) {
   classificacao = "Média";
 } else {
   classificacao = "Baixa";
