@@ -1,6 +1,10 @@
 import { carregarVagas } from "./dados.js";
 
-import { analisarCompatibilidade } from "./motor.js";
+import {
+  analisarCompatibilidade,
+  encontrarMelhorVaga,
+  gerarRecomendacao,
+} from "./motor.js";
 
 import { mostrarResultados } from "./ui.js";
 
@@ -54,6 +58,14 @@ try {
     .sort((a, b) => b.porcentagem - a.porcentagem);
 
   console.log(resultados);
+
+  const melhorVaga = encontrarMelhorVaga(resultados);
+
+  const recomendacao = gerarRecomendacao(melhorVaga);
+
+  console.log("Recomendação:", recomendacao);
+
+console.log("Melhor vaga:", melhorVaga);
 
   mostrarResultados(resultados);
   

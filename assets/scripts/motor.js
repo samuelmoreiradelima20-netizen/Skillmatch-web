@@ -25,14 +25,28 @@ if (porcentagem >= 80) {
   classificacao = "Baixa";
 }
 
-  return {
-    empresa: vaga.empresa,
-    cargo: vaga.cargo,
-    porcentagem,
-    classificacao,
-    habilidadesCompativeis,
-    areaCompativel,
-    experienciaSuficiente,
-    habilidadesFaltantes,
-  };
+ return {
+  empresa: vaga.empresa,
+  cargo: vaga.cargo,
+  porcentagem,
+  classificacao,
+  habilidadesCompativeis,
+  areaCompativel,
+  experienciaSuficiente,
+  habilidadesFaltantes,
+};
+}
+
+export function encontrarMelhorVaga(resultados) {
+  return resultados.reduce((melhor, atual) => {
+    return atual.porcentagem > melhor.porcentagem ? atual : melhor;
+  });
+}
+
+export function gerarRecomendacao(melhorVaga) {
+  if (melhorVaga.habilidadesFaltantes.length === 0) {
+    return "Você já possui todas as habilidades exigidas para esta vaga.";
+  }
+
+  return `Recomendamos estudar: ${melhorVaga.habilidadesFaltantes.join(", ")}.`;
 }
