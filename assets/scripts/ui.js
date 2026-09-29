@@ -3,13 +3,13 @@ export function mostrarResultados(resultados) {
   areaResultados.textContent = "";
 
   if (resultados.length === 0) {
-   areaResultados.textContent = "Nenhuma vaga disponível no momento.";
+    areaResultados.textContent = "Nenhuma vaga disponível no momento.";
     return;
   }
 
   resultados.forEach((resultado) => {
     const item = document.createElement("article");
-  item.classList.add("vaga-card");
+    item.classList.add("vaga-card");
     const area = resultado.areaCompativel ? "compatível" : "diferente";
     const experiencia = resultado.experienciaSuficiente
       ? "suficiente"
@@ -18,7 +18,7 @@ export function mostrarResultados(resultados) {
       ? resultado.habilidadesFaltantes.join(", ")
       : "nenhuma";
 
-    item.textContent = `${resultado.empresa}: ${resultado.porcentagem}% das habilidades | Área: ${area} | Experiência: ${experiencia} | Habilidades faltantes: ${faltantes}`;
+    item.textContent = `${resultado.empresa}: ${resultado.porcentagem}% das habilidades | Classificação: ${resultado.classificacao} | Área: ${area} | Experiência: ${experiencia} | Habilidades faltantes: ${faltantes}`;
     areaResultados.appendChild(item);
   });
 }
