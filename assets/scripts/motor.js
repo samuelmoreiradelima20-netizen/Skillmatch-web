@@ -15,10 +15,21 @@ export function analisarCompatibilidade(profile, vaga) {
   const experienciaSuficiente =
     profile.experience >= vaga.experienciaMinima;
 
+    let classificacao;
+
+if (porcentagem >= 70) {
+  classificacao = "Alta";
+} else if (porcentagem >= 40) {
+  classificacao = "Média";
+} else {
+  classificacao = "Baixa";
+}
+
   return {
     empresa: vaga.empresa,
     cargo: vaga.cargo,
     porcentagem,
+    classificacao,
     habilidadesCompativeis,
     areaCompativel,
     experienciaSuficiente,
