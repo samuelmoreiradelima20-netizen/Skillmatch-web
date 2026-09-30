@@ -4,11 +4,13 @@ import {
   VagaFrontEnd,
   encontrarMelhorVaga,
   gerarRecomendacao,
+  criarContadorAnalises,
 } from "./motor.js";
 
 import { mostrarResultados, mostrarMelhorVaga } from "./ui.js";
 
 const form = document.querySelector("#profile-form");
+const contadorAnalises = criarContadorAnalises();
 
 const perfilSalvo = JSON.parse(localStorage.getItem("skillmatch-profile"));
 
@@ -78,11 +80,17 @@ form.addEventListener("submit", async (event) => {
 
     const melhorVaga = encontrarMelhorVaga(resultados);
     const recomendacao = gerarRecomendacao(melhorVaga);
+    const numeroAnalise = contadorAnalises();
 
+    function executarCallback(resultados, callback) {
+    callback(resultados);
+  }
+
+    console.log("Análise número:", numeroAnalise);
     console.log("Recomendação:", recomendacao);
     console.log("Melhor vaga:", melhorVaga);
 
-    mostrarResultados(resultados);
+    executarCallback(resultados, mostrarResultados);
     mostrarMelhorVaga(melhorVaga, recomendacao);
   } catch (erro) {
     document.querySelector("#results").textContent = erro.message;

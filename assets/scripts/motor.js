@@ -95,3 +95,12 @@ export function gerarRecomendacao(melhorVaga) {
 
   return `Recomendamos estudar: ${melhorVaga.habilidadesFaltantes.join(", ")}.`;
 }
+
+export function criarContadorAnalises() {
+  let total = 0;
+
+  return function () {
+    total++;
+    return total;
+  };
+}
