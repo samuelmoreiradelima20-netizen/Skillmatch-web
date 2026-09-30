@@ -1,12 +1,13 @@
 import { carregarVagas } from "./dados.js";
 
 import {
-  analisarCompatibilidade,
+  VagaFrontEnd,
   encontrarMelhorVaga,
   gerarRecomendacao,
 } from "./motor.js";
 
 import { mostrarResultados, mostrarMelhorVaga } from "./ui.js";
+
 const form = document.querySelector("#profile-form");
 
 const perfilSalvo = JSON.parse(localStorage.getItem("skillmatch-profile"));
@@ -20,58 +21,70 @@ if (perfilSalvo) {
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
- const data = new FormData(form);
- const values = Object.fromEntries(data);
 
-const profile = {
-  name: values.name.trim(),
-  area: values.area.trim().toLowerCase(),
-  skills: values.skills.split(",").map((skill) => skill.trim().toLowerCase()).filter((skill) => skill !== ""),
-  experience: Number(values.experience),
-};
+  const data = new FormData(form);
+  const values = Object.fromEntries(data);
 
-if (!profile.name || !profile.area) {
-  document.querySelector("#results").textContent =
-    "Informe seu nome e sua área de interesse.";
-  return;
-}
+  const profile = {
+    name: values.name.trim(),
+    area: values.area.trim().toLowerCase(),
+    skills: values.skills
+      .split(",")
+      .map((skill) => skill.trim().toLowerCase())
+      .filter((skill) => skill !== ""),
+    experience: Number(values.experience),
+  };
 
-if (profile.skills.length === 0) {
-  document.querySelector("#results").textContent =
-    "Informe pelo menos uma habilidade.";
-  return;
-}
+  if (!profile.name || !profile.area) {
+    document.querySelector("#results").textContent =
+      "Informe seu nome e sua área de interesse.";
+    return;
+  }
 
-localStorage.setItem("skillmatch-profile", JSON.stringify(profile));
+  if (profile.skills.length === 0) {
+    document.querySelector("#results").textContent =
+      "Informe pelo menos uma habilidade.";
+    return;
+  }
 
-console.log(profile);
+  localStorage.setItem("skillmatch-profile", JSON.stringify(profile));
 
-document.querySelector("#results").textContent = "Carregando vagas...";
+  console.log(profile);
 
-try {
-  const vagas = await carregarVagas();
-  console.log(vagas);
+  document.querySelector("#results").textContent = "Carregando vagas...";
 
-   const resultados = vagas
-    .map((vaga) => analisarCompatibilidade(profile, vaga))
-    .sort((a, b) => b.porcentagem - a.porcentagem);
+  try {
+    const vagasCarregadas = await carregarVagas();
 
-  console.log(resultados);
+    const vagas = vagasCarregadas.map(
+      (vaga) =>
+        new VagaFrontEnd(
+          vaga.id,
+          vaga.empresa,
+          vaga.cargo,
+          vaga.area,
+          vaga.requisitos,
+          vaga.experienciaMinima
+        )
+    );
 
-  const melhorVaga = encontrarMelhorVaga(resultados);
+    console.log(vagas);
 
-  const recomendacao = gerarRecomendacao(melhorVaga);
+    const resultados = vagas
+      .map((vaga) => vaga.analisarCompatibilidade(profile))
+      .sort((a, b) => b.porcentagem - a.porcentagem);
 
-  console.log("Recomendação:", recomendacao);
+    console.log(resultados);
 
-console.log("Melhor vaga:", melhorVaga);
+    const melhorVaga = encontrarMelhorVaga(resultados);
+    const recomendacao = gerarRecomendacao(melhorVaga);
 
-  mostrarResultados(resultados);
+    console.log("Recomendação:", recomendacao);
+    console.log("Melhor vaga:", melhorVaga);
 
-  mostrarMelhorVaga(melhorVaga, recomendacao);
-  
-} catch (erro) {
-  document.querySelector("#results").textContent = erro.message;
-}
-
+    mostrarResultados(resultados);
+    mostrarMelhorVaga(melhorVaga, recomendacao);
+  } catch (erro) {
+    document.querySelector("#results").textContent = erro.message;
+  }
 });
