@@ -58,8 +58,39 @@ button {
 }
 
 .vaga-card {
-    border: 1px solid #d1d5db;
+    border: 1px solid #5b96ee;
     border-radius: 8px;
     padding: 1rem;
     margin-bottom: 1rem;
+}
+
+.logo {
+    width: 140px;
+    height: auto;
+    display: block;
+    margin: 0 auto 1rem;
+}
+
+button:focus-visible,
+nav a:focus-visible {
+    outline: 3px solid #80bfff;
+    outline-offset: 3px;
+}
+
+nav a {
+    color: #80bfff;
+    text-decoration: none;
+    margin: 0 0.5rem;
+    font-weight: bold;
+    transition: color 0.2s ease;
+}
+
+nav a:hover {
+    color: #ffffff;
+}
+
+nav a:focus-visible {
+    outline: 3px solid #38bdf8;
+    outline-offset: 3px;
+    border-radius: 4px;
 }
