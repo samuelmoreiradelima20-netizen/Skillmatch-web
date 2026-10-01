@@ -10,6 +10,7 @@ import {
 import { mostrarResultados, mostrarMelhorVaga } from "./ui.js";
 
 const form = document.querySelector("#profile-form");
+const formError = document.querySelector("#form-error");
 const contadorAnalises = criarContadorAnalises();
 
 const perfilSalvo = JSON.parse(localStorage.getItem("skillmatch-profile"));
@@ -23,6 +24,7 @@ if (perfilSalvo) {
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
+  formError.textContent = "";
 
   const data = new FormData(form);
   const values = Object.fromEntries(data);
@@ -38,14 +40,13 @@ form.addEventListener("submit", async (event) => {
   };
 
   if (!profile.name || !profile.area) {
-    document.querySelector("#results").textContent =
-      "Informe seu nome e sua área de interesse.";
-    return;
-  }
+  formError.textContent =
+    "Informe seu nome e sua área de interesse.";
+  return;
+}
 
   if (profile.skills.length === 0) {
-    document.querySelector("#results").textContent =
-      "Informe pelo menos uma habilidade.";
+    formError.textContent = "Informe pelo menos uma habilidade.";
     return;
   }
 
