@@ -17,8 +17,11 @@ export function mostrarResultados(resultados) {
     const faltantes = resultado.habilidadesFaltantes.length
       ? resultado.habilidadesFaltantes.join(", ")
       : "nenhuma";
+     const encontradas = resultado.habilidadesCompativeis.length
+  ? resultado.habilidadesCompativeis.join(", ")
+  : "nenhuma"; 
 
-    item.textContent = `${resultado.empresa}: ${resultado.porcentagem}% das habilidades | Classificação: ${resultado.classificacao} | Área: ${area} | Experiência: ${experiencia} | Habilidades faltantes: ${faltantes}`;
+    item.textContent = `${resultado.empresa}: ${resultado.porcentagem}% das habilidades | Classificação: ${resultado.classificacao} | Área: ${area} | Experiência: ${experiencia} | Habilidades faltantes: ${faltantes} | Habilidades encontradas: ${encontradas}`;
     areaResultados.appendChild(item);
   });
 }
