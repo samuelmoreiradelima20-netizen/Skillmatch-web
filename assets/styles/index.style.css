@@ -14,7 +14,7 @@ header {
 }
 
 main {
-    padding: 2rem;
+    padding: 1rem;
     max-width: 960px;
     margin: 0 auto;
 
@@ -70,6 +70,8 @@ button {
     height: auto;
     display: block;
     margin: 0 auto 1rem;
+    max-width: 100%;
+    object-fit: contain;
 }
 
 button:focus-visible,
@@ -100,4 +102,10 @@ nav a:focus-visible {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+}
+
+@media (min-width: 768px) {
+    main {
+        padding: 2rem;
+    }
 }
