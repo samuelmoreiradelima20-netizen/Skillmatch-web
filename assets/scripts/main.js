@@ -59,6 +59,11 @@ form.addEventListener("submit", async (event) => {
   try {
     const vagasCarregadas = await carregarVagas();
 
+    if (vagasCarregadas.length === 0) {
+  document.querySelector("#results").textContent = "Nada encontrado.";
+  return;
+}
+
     const vagas = vagasCarregadas.map(
       (vaga) =>
         new VagaFrontEnd(
