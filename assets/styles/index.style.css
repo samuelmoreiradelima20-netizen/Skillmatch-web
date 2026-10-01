@@ -1,0 +1,111 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+    color: #1453aa;
+    background-color: #f4f7fb;
+    margin: 0;
+}
+
+header {
+    background-color: #17324d;
+    color: #ffffff;
+    padding: 2.5rem 1rem;
+    text-align: center;
+}
+
+main {
+    padding: 1rem;
+    max-width: 960px;
+    margin: 0 auto;
+
+}
+
+section {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 16px rgba(36, 115, 218, 0.12);
+}
+
+input {
+    padding: 0.6rem;
+    margin-top: 0.3rem;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #b8c6d5;
+    border-radius: 6px;
+    font: inherit;
+}
+
+input:focus-visible {
+    outline: 3px solid #80bfff;
+    outline-offset: 2px;
+}
+
+label {
+    display: block;
+    margin-top: 1rem;
+}
+
+button {
+    margin-top: 1rem;
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+
+}
+
+.vaga-card {
+    border: 1px solid #5b96ee;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    flex: 1 1 280px;
+}
+
+.logo {
+    width: 140px;
+    height: auto;
+    display: block;
+    margin: 0 auto 1rem;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+button:focus-visible,
+nav a:focus-visible {
+    outline: 3px solid #80bfff;
+    outline-offset: 3px;
+}
+
+nav a {
+    color: #80bfff;
+    text-decoration: none;
+    margin: 0 0.5rem;
+    font-weight: bold;
+    transition: color 0.2s ease;
+}
+
+nav a:hover {
+    color: #ffffff;
+}
+
+nav a:focus-visible {
+    outline: 3px solid #38bdf8;
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+#results {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+@media (min-width: 768px) {
+    main {
+        padding: 2rem;
+    }
+}

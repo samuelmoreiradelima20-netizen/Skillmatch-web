@@ -1,0 +1,36 @@
+[
+  {
+    "id": 1,
+    "empresa": "Stark Industries",
+    "cargo": "Desenvolvedor Front-end Júnior",
+    "area": "front-end",
+    "requisitos": ["javascript", "html", "css"],
+    "experienciaMinima": 0
+  },
+
+  {
+  "id": 2,
+  "empresa": "Indústrias Wayne",
+  "cargo": "Desenvolvedor Front-end Júnior",
+  "area": "front-end",
+  "requisitos": ["javascript", "html", "react"],
+  "experienciaMinima": 1
+},
+
+{
+  "id": 3,
+  "empresa": "Tech Nova",
+  "cargo": "Desenvolvedor JavaScript Júnior",
+  "area": "front-end",
+  "requisitos": ["javascript", "css", "git"],
+  "experienciaMinima": 0
+},
+{
+  "id": 4,
+  "empresa": "WebLab",
+  "cargo": "Desenvolvedor Front-end",
+  "area": "front-end",
+  "requisitos": ["html", "css", "react"],
+  "experienciaMinima": 2
+}
+]
