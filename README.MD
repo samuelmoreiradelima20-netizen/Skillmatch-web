@@ -620,4 +620,4 @@ Algumas melhorias que podem ser adicionadas futuramente:
 ---
 ### Link do Kanban
 
-ADICIONAR LINK DO KANBAN AQUI
+[Kanban do SkillMatch Web](https://github.com/users/samuelmoreiradelima20-netizen/projects/3)
